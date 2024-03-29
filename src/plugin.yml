@@ -1,0 +1,25 @@
+name:  NextBlock
+main:  NextBlock.NextBlock
+version:  0.0.7
+api-version: 1.13
+author:  MrMarL
+softdepend: [PlaceholderAPI, WorldEdit, SkinsRestorer, HolographicDisplays]
+loadbefore: [Multiverse-Core]
+commands:
+  nextblock:
+    description: NextBlock main command.
+    aliases: anb
+    usage: /anb join
+  anb j:
+  anb ver:
+    description: Version.
+permissions:
+    NextBlock.set:
+        description: For admin
+        default: op
+    NextBlock.place:
+        description: To place blocks on an ungenerated territory
+        default: false
+    NextBlock.join:
+        description: For all
+        default: true
