@@ -185,25 +185,6 @@ public class NextBlock extends JavaPlugin{
 				Location loc = bl.getLocation().add(e.getBlockFace().getDirection());
 				
 				if (wor.getBlockAt(loc.getBlockX(), worMin, loc.getBlockZ()).getType() == Material.BEDROCK) return;
-				/*
-				//
-				// 1 блочные генераторы
-				//
-				if (check.equals(genItems.baseGen)) {
-					BlockFace bf = e.getBlockFace(); 
-					Location loc = bl.getLocation().add(bf.getDirection());
-					if (!RegenBlock(loc)) return;
-					GenPercent(loc.clone(), baseSpeed, genSpeed, check); 
-					addRemGen(name, baseSpeed);
-					RegenBlock(loc);
-					return;
-				}
-				if (check.equals(genItems.exbaseGen)) {
-					BlockFace bf = e.getBlockFace();
-					Location loc = bl.getLocation().add(bf.getDirection());
-					RegenBlock(loc);
-					return;
-				}*/
 				//
 				// 1 слойные генераторы
 				//
@@ -213,29 +194,22 @@ public class NextBlock extends JavaPlugin{
 				if (check.equals(genItems.gen1x1))  iStack.setAmount(iStack.getAmount() + 1);
 				else if (check.equals(genItems.gen3x3)) {
 					r = 1;
-					//regenTime = 3 * delay;
 				} else if (check.equals(genItems.gen5x5)) {
 					r = 2;
-					//regenTime = 5 * delay;
 				} else if (check.equals(genItems.gen15x15)) {
 					r = 7;
-					//regenTime = 10 * delay;//225
 				} else if (check.equals(genItems.exGen3x3)) {
 					delay = genExSpeed;
 					r = 1;
-					//regenTime = 3 * delay;
 				} else if (check.equals(genItems.exGen5x5)) {
 					delay = genExSpeed;
 					r = 2;
-					//regenTime = 5 * delay;
 				} else if (check.equals(genItems.exGen9x9)) {
 					delay = genExSpeed;
 					r = 4;
-					//regenTime = 10 * delay;
 				} else if (check.equals(genItems.exGen15x15)) {
 					delay = genExSpeed;
 					r = 7;
-					//regenTime = 35 * delay;
 				}
 				Long regenTime = (2*r+1) * (2*r+1) * delay;
 				
@@ -255,50 +229,10 @@ public class NextBlock extends JavaPlugin{
 				e.setCancelled(true);
 	    }
 	}
+	
 	private Location GetSpawnLocation(int around) {
 		return new Location(wor, rnd.nextInt(around*2) - around, worMin, rnd.nextInt(around*2) - around);
 	}
-	
-//	private boolean RegenBlock(Location loc, Long tick) {
-//		if (loc.getBlockY() == worMin)
-//			return false;
-//		
-//		BlockData bl_ref = wor_ref.getBlockAt(loc).getBlockData();
-//		if (bl_ref.getMaterial().equals(Material.AIR))
-//			return false;
-//		
-//		Block zero = wor.getBlockAt(loc.getBlockX(), worMin, loc.getBlockZ());
-//		if (zero.getType().equals(Material.BEDROCK))
-//			return false;
-//		
-//		Block bl = wor.getBlockAt(loc);
-//		if (!bl.getBlockData().matches(bl_ref)) {
-//			Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
-//				@Override
-//				public void run() {
-//					wor.getBlockAt(loc).setBlockData(bl_ref);
-//					wor_ref.getBlockAt(loc).setType(Material.AIR);
-//				}
-//			}, tick);
-//			return true;
-//		}
-//		return false;
-//	}
-	
-	/*
-	 * private boolean RegenBlock(Location loc) { if (loc.getBlockY() == worMin)
-	 * return false;
-	 * 
-	 * BlockData bl_ref = wor_ref.getBlockAt(loc).getBlockData(); if
-	 * (bl_ref.getMaterial().equals(Material.AIR)) return false;
-	 * 
-	 * Block zero = wor.getBlockAt(loc.getBlockX(), worMin, loc.getBlockZ()); if
-	 * (zero.getType().equals(Material.BEDROCK)) return false;
-	 * 
-	 * Block bl = wor.getBlockAt(loc); if (!bl.getBlockData().matches(bl_ref)) {
-	 * wor.getBlockAt(loc).setBlockData(bl_ref);
-	 * wor_ref.getBlockAt(loc).setType(Material.AIR); return true; } return false; }
-	 */
 	
 	private void Regen(Location loc, int radius, Long tick) {
 		int x = loc.getBlockX()-radius, z = loc.getBlockZ()-radius;
@@ -551,8 +485,6 @@ public class NextBlock extends JavaPlugin{
 						item = genItems.exGen9x9;
 					if (args[i].equals("exGen15x15"))
 						item = genItems.exGen15x15;
-					//if (args[i].equals("exbaseGen"))
-					//	item = genItems.exbaseGen;
 					if (item == null)
 						return true;
 					
@@ -621,7 +553,6 @@ public class NextBlock extends JavaPlugin{
         wor_ref = Bukkit.getWorld(Check("world_reference", "NextBlock_Reference"));
         genSpeed = Check("genSpeed", genSpeed);
         genExSpeed = Check("genExSpeed", genExSpeed);
-        //baseSpeed = Check("baseSpeed", baseSpeed);
         genItems.head1x1 = Check("head1x1", "MHF_Exclamation");
         genItems.head3x3 = Check("head3x3", "MHF_Exclamation");
         genItems.head5x5 = Check("head5x5", "MHF_Exclamation");
@@ -630,8 +561,6 @@ public class NextBlock extends JavaPlugin{
         genItems.exHead5x5 = Check("exHead5x5", "MHF_Exclamation");
         genItems.exHead9x9 = Check("exHead9x9", "MHF_Exclamation");
         genItems.exHead15x15 = Check("exHead15x15", "MHF_Exclamation");
-       // genItems.baseHead = Check("baseHead", "18565");
-       // genItems.exbaseHead = Check("exbaseHead", "18565");
         base = Check("base", base);
     }
 	

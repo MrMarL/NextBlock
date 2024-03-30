@@ -10,7 +10,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class CustomItems {
-	//public ItemStack baseGen, exbaseGen;
 	public ItemStack gen1x1, gen3x3, gen5x5, gen15x15, exGen3x3, exGen5x5, exGen9x9, exGen15x15;
 	public String baseHead, exbaseHead;
 	public String head1x1, head3x3, head5x5, head15x15, exHead3x3, exHead5x5, exHead9x9, exHead15x15;
@@ -25,8 +24,6 @@ public class CustomItems {
 		exGen5x5 = gen3x3.clone();
 		exGen9x9 = gen3x3.clone();
 		exGen15x15 = gen3x3.clone();
-		//baseGen = new ItemStack(Material.STRUCTURE_BLOCK, 1);
-		//exbaseGen = baseGen.clone();
 		CreateItems();
 	}
 	
@@ -47,8 +44,6 @@ public class CustomItems {
 			exGen5x5 = getPlayerHead(exHead5x5);
 			exGen9x9 = getPlayerHead(exHead9x9);
 			exGen15x15 = getPlayerHead(exHead15x15);
-			//baseGen = api.getItemHead(baseHead);
-			//exbaseGen = api.getItemHead(exbaseHead);
 			CreateItems();
 	}
 
@@ -88,13 +83,6 @@ public class CustomItems {
 		Lore.set(1, "15x15 but fast");
 		SetParameters(exGen15x15, "Improved Generator 15x15", Lore);
 
-		/*
-		 * Lore.set(0, "Block generator..."); Lore.set(1,
-		 * "Infinite, but not too efficient"); SetParameters(baseGen, "Basic", Lore);
-		 * 
-		 * SetParameters(exbaseGen, "Basic++", Lore);
-		 */
-
 		Gens.clear();
 		Gens.add(gen1x1);
 		Gens.add(gen3x3);
@@ -104,7 +92,5 @@ public class CustomItems {
 		Gens.add(exGen5x5);
 		Gens.add(exGen9x9);
 		Gens.add(exGen15x15);
-		//Gens.add(baseGen);
-		//Gens.add(exbaseGen);
 	}
 }
